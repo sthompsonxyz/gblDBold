@@ -1,0 +1,20 @@
+
+[% PROCESS mainmenu.tt2 pagename= "Primer calc results" %]
+
+<div id="results">
+Input sequence:<br>
+[% primersequence %]<br>
+<br>
+Reverse complement:<br>
+[% priseqrevcom %]<br>
+<br>
+GC%:<br>
+[% GCpercent %] <br>
+Sequence length:<br>
+[% totalchars %]<br>
+Annealing temperature:<br>
+[% AnnTemp %] <br>
+
+
+
+</div>

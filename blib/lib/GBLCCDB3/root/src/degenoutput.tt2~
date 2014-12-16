@@ -1,0 +1,17 @@
+[% PROCESS mainmenu.tt2 pagename= "Degenerate Primer Results" %]
+
+
+
+<div id="results">
+
+Your sequence:<br>
+[% degenseq %] <br><br>
+Sequence length:<br>
+[% peptlength %] <br><br>
+Forward degenerate primer:
+5' [% degenprimer_f %] 3' <br><br>
+
+Reverse complement/Primer:
+5' [% degenprimer_r %] 3' <br><br>
+
+</div>

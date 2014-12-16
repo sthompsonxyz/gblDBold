@@ -1,0 +1,16 @@
+<style type="text/css">
+[% PROCESS strainshow.css %]
+</style>
+
+[% PROCESS mainmenu.tt2 pagename =  gblsamplecode %]
+
+    <div id ="recordspace">
+	[% sampledata.0.strains.sample.sample_code %]
+ <br>
+    
+    [% FOREACH samplerec IN sampledata -%]
+	[% samplerec.strains.gbl_accession_number %] <br>
+<br>
+[% END %]
+
+</div>

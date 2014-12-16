@@ -1,0 +1,9 @@
+[% PROCESS mainmenu.tt2 pagename = "Sam's BioTools" %]
+
+<div id="homenews">
+Convert peptide sequences to degenerate oligos with <a href=[%c.uri_for('/samsbiotools/degenprimers')%]>degen primer calc</a>.
+
+
+
+
+</div>

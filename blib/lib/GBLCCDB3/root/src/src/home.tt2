@@ -1,0 +1,52 @@
+<div id="topLico">
+
+</div>
+
+<div id="topBar">
+<h3>GBL DB Web UI v0.2.0</h3><br>
+<h3>Main page</h3>
+
+</div>
+
+<div id="leftBar">
+<a href = "/">Home</a><br>
+<a href = "/gblstrain">Strain</a><br>
+<a href = "/gblsample">Sample</a><br>
+<a href = "/gblsource">Source</a><br>
+<a href = "/about">About</a><br>
+LogOff
+
+</div>
+
+<div id="homenews">
+<b>GBL DB Latest developments...</b>
+<br>
+<b>Planned functionality for future versions:<br></b>
+Sample and Site/source search. Tooltips explaining field meanings.<br>
+Strain output expanded. Record add/edit functionality<br>
+Security/access rights. Combobox for organism searching<br>
+
+Regex for better searching. Include extended GBL datasets on server.<br>
+Printable results. Customise results<br>
+<br>
+<b>V.0.2.0: Initial Reimplementation, UI Prototype</b>
+<br>
+A prototype displaying the very basic database access functionality.<br>
+Also including search form into single page view for better user/readability vs. v0.1<br>
+Search results delivered on separate page<br>
+Contains only a strain search page option, with limited available fields for forming queries.<br>
+Strains can be searched by: GBL Acc. No., Strain Code, Sample Code, Box Number.<br>
+
+Clear field button implemented.<br>
+Demonstrates possible colour scheme!<br>
+Allows submission of (limited)field values via CGI and DBI (implemented in Perl), data returned from<br>
+MySQL database is returned and displayed with limited headings and no further connectivity.<br>
+
+
+--------------------------------------------------------------------------
+<br>
+<b>V0.1 : Original GBL DB Implementation</b>
+</div>
+
+
+

@@ -1,0 +1,41 @@
+--
+    -- Add users and roles tables, along with a many-to-many join table
+    --
+    CREATE TABLE users (
+            id            INTEGER PRIMARY KEY,
+            username      TEXT,
+            password      TEXT,
+            email_address TEXT,
+            first_name    TEXT,
+            last_name     TEXT,
+            active        INTEGER
+    );
+    CREATE TABLE roles (
+            id   INTEGER PRIMARY KEY,
+            role TEXT
+    );
+    CREATE TABLE user_roles (
+            user_id INTEGER,
+            role_id INTEGER,
+            PRIMARY KEY (user_id, role_id)
+    );
+    --
+    -- Load up some initial test data
+    --
+    INSERT INTO users VALUES (1, 'SAMT', 'mypass', '', 'Samantha',  'Thompson', 1);
+    INSERT INTO users VALUES (2, 'RENIAG', 'mypass', '', 'Renia', 'Gemmel',  1);
+    INSERT INTO users VALUES (3, 'EDWARDG', 'mypass', '', 'Edward',   'Green',   1);
+INSERT INTO users VALUES (4, 'LIZJ', 'mypass', '', 'Liz',   'Jenkinson',   1);
+INSERT INTO users VALUES (5, 'PREBENK', 'mypass', '', 'Preben',   'Krabben',   1);
+INSERT INTO users VALUES (6, 'JIMN', 'mypass', '', 'Jim',   'Nicolle',   1);
+INSERT INTO users VALUES (7, 'SWATIP', 'mypass', '', 'Swati',   'Patel',   1);
+    INSERT INTO roles VALUES (1, 'user');
+    INSERT INTO roles VALUES (2, 'admin');
+    INSERT INTO user_roles VALUES (1, 1);
+    INSERT INTO user_roles VALUES (1, 2);
+    INSERT INTO user_roles VALUES (2, 1);
+    INSERT INTO user_roles VALUES (3, 1);
+INSERT INTO user_roles VALUES (4, 1);
+INSERT INTO user_roles VALUES (5, 1);
+INSERT INTO user_roles VALUES (6, 1);
+INSERT INTO user_roles VALUES (7, 1);

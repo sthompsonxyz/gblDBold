@@ -1,0 +1,25 @@
+
+[% PROCESS mainmenu.tt2 pagename= "Sams Bio Tools" %]
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+function clearAll(){
+	document.forms[0].reset();
+}
+</SCRIPT>
+
+<div id="results">
+
+<form method="POST" action="[% c.uri_for('stdprimercalc') %]">
+<table cellpadding='3'>
+<tr><th>
+<b> Standard primer calc, insert nucleotide sequence:</b><br>
+</th></tr>
+<tr align='center'><td>
+<input type="text" name="peptide" value="" size="20"><br><br></td></tr>
+
+<tr align='center'><td>
+<input type="button" value="Clear" onClick="clearAll()">
+<input type="submit" value="Degen. Seq." /></td></td> </table>
+</form>
+
+</div>

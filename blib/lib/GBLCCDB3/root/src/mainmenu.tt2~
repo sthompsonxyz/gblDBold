@@ -1,0 +1,115 @@
+<script type="text/javascript">
+<!--
+window.onload=show;
+function show(id) {
+var d = document.getElementById(id);
+	for (var i = 1; i<=10; i++) {
+		if (document.getElementById('smenu'+i)) {document.getElementById('smenu'+i).style.display='none';}
+	}
+if (d) {d.style.display='block';}
+}
+//-->
+</script>
+
+<style type="text/css" media="screen">
+<!-- 
+body {
+margin: 0;
+padding: 0;
+background: #ddddddS;
+font: 80% verdana, arial, sans-serif;
+}
+dl, dt, dd, ul, li {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+.menu {
+position: absolute; /* Menu position that can be changed at will */
+top: 60%;
+}
+.menu {
+width: 11%;
+}
+.menu dt {
+cursor: pointer;
+margin: 2px 0;;
+height: 20px;
+line-height: 20px;
+text-align: center;
+font-weight: bold;
+border: 1px solid gray;
+background: #4444ee;
+color: #dddddd;
+}
+.menu dd {
+border: 1px solid gray;
+color: #333333;
+}
+.menu li {
+text-align: center;
+background: #eeeeee;
+color: #333333;
+}
+.menu li a, #menu dt a {
+color: #333333;
+text-decoration: none;
+display: block;
+border: 0 none;
+height: 100%;
+}
+.menu li a:hover, #menu dt a:hover {
+color: #333333;
+background: #eee;
+}
+-->
+</style>
+
+
+<div class = "bl" style="top: -10px; left: 5%; width:90%; z-index: 4;"><div class="br"><div class="tl"><div class="tr">
+
+<a href = "/">
+<h3> GBLCCDB </h3> </a>
+
+
+<div id="aboutclick">
+<a href = "/about">About</a>
+</div>
+
+<div id="loutclick"><a href = "/logout">logout</a></div>
+
+
+<div class="menu" style="left: 53%">
+	<dl>			
+		<dt onmouseover="javascript:show('smenu1');">Search</dt>
+			<dd id="smenu1" onmouseover="javascript:show('smenu1');" onmouseout="javascript:show('');">
+				<ul>
+					<li><a href = "/gblstrain">GBL Strain</a></li>
+					<li><a href = "/gblsample">GBL Sample</a></li>
+					<li><a href = "/gblsource">GBL Source</a></li>
+				</ul>
+			</dd>
+	</dl>
+</div>
+
+<div class="menu" style="left: 65%">
+	<dl>			
+		<dt onmouseover="javascript:show('smenu2');">Samsbiotools</dt>
+			<dd id="smenu2" onmouseover="javascript:show('smenu2');" onmouseout="javascript:show('');">
+				<ul>
+					<li><a href = "[% c.uri_for('/samsbiotools', 'degenprimers') %]">Degenerate Primers</a></li>
+				</ul>
+			</dd>
+	</dl>
+</div>
+
+
+
+
+</div></div></div></div>
+<div class="clear">&nbsp</div>
+<div id="pagename">
+<h3> [% pagename %] </h3>
+</div>
+
+

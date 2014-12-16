@@ -1,0 +1,804 @@
+
+html {
+    height: 100%;
+}
+
+body { 
+    background-color: #eeeeee;
+    color: [% site.col.text %];
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+font: arial 16px;
+overflow: visible;
+}
+
+#header {
+    background-color: [% site.col.head %];
+    border-bottom: 1px solid [% site.col.line %];
+}
+
+#footer {
+    background-color: [% site.col.head %];
+    text-align: center;
+    border-top: 1px solid [% site.col.line %];
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+    padding: 4px;
+}
+
+#content {
+    padding: 10px;
+}
+
+h1.title {
+    padding: 4px;
+    margin: 0px;
+}
+
+.message {
+    color: [% site.col.message %];
+}
+
+.error {
+    color: [% site.col.error %];
+}
+
+#topLico
+{
+position:absolute;
+top: 5px;
+left: 5px;
+width: 150px;
+height: 100px;
+z-index: 1;
+background-image: url('/greenIco.GIF');
+}
+
+#topBar
+{
+position: absolute;
+top: 5px;
+left: 160px;
+height: 115px;
+width: 680px;
+background-color: #eeeeee;
+z-index: 1;
+line-height: 30%;
+}
+
+#leftbar a:hover
+{
+color: #eeeeee;
+background-color: #222222;
+}
+
+#DBIDsearch
+{
+position:absolute;
+top: 20%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchGBLAccNo
+{
+position:absolute;
+top: 20%;
+left: 18%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchStrainCode
+{
+position:absolute;
+top: 20%;
+left: 36%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchSample
+{
+position:absolute;
+top: 20%;
+left: 54%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#taxonomysearch
+{
+position: absolute;
+top: 28%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#genussearch
+{
+position:absolute;
+top: 28%;
+left: 18%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#speciessearch
+{
+position:absolute;
+top: 28%;
+left: 36%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#taxsearchrightpad
+{
+position: absolute;
+top: 28%;
+left: 54%;
+height: 8%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#growthconsearch
+{
+position: absolute;
+top: 36%;
+left: 10%;
+width: 8%;
+height: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchTempRange
+{
+position:absolute;
+top: 36%;
+left: 18%;
+height: 10%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchpH
+{
+position:absolute;
+top: 36%;
+left: 36%;
+height: 10%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchAerobicGr
+{
+position:absolute;
+top: 36%;
+left: 54%;
+height: 10%;
+width: 18%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#storageinfo
+{
+position:absolute;
+top: 46%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchBoxNo
+{
+position:absolute;
+top: 46%;
+left: 18%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchNoTubes
+{
+position:absolute;
+top: 46%;
+left: 26%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchViable
+{
+position:absolute;
+top: 46%;
+left: 34%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchPure
+{
+position:absolute;
+top: 46%;
+left: 43.5%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchBeads
+{
+position:absolute;
+top: 46%;
+left: 53%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchFreezeDried
+{
+position:absolute;
+top: 46%;
+left: 62.5%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchColonChars
+{
+position:absolute;
+top: 54%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCPer
+{
+position:absolute;
+top: 54%;
+left: 18%;
+height: 8%;
+width: 9%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCProf
+{
+position:absolute;
+top: 54%;
+left: 27%;
+height: 8%;
+width: 9%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCTex
+{
+position:absolute;
+top: 54%;
+left: 35%;
+height: 8%;
+width: 9%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCTrans
+{
+position:absolute;
+top: 54%;
+left: 44%;
+height: 8%;
+width: 9%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCColr
+{
+position:absolute;
+top: 54%;
+left: 53%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCCDia
+{
+position:absolute;
+top: 54%;
+left: 62.5%;
+height: 8%;
+width: 9.5%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#otherchars
+{
+position:absolute;
+top: 62%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchPigment
+{
+position:absolute;
+top: 62%;
+left: 18%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCellShape
+{
+position:absolute;
+top: 62%;
+left: 28%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchSporeType
+{
+position:absolute;
+top: 62%;
+left: 38%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchSporeShape
+{
+position:absolute;
+top: 62%;
+left: 48%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchMotile
+{
+position:absolute;
+top: 62%;
+left: 58%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchTransformable
+{
+position:absolute;
+top: 62%;
+left: 68%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#recordinfo
+{
+position:absolute;
+top: 70%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchSubmitter
+{
+position:absolute;
+top: 70%;
+left: 18%;
+height: 8%;
+width: 15%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#biochinfo
+{
+position:absolute;
+top: 78%;
+left: 10%;
+height: 8%;
+width: 8%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchCatalaseTest
+{
+position:absolute;
+top: 78%;
+left: 18%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+#StrainSearchGramStain
+{
+position:absolute;
+top: 78%;
+left: 28%;
+height: 8%;
+width: 10%;
+background-color: #eeeeee;
+z-index: 1;
+border-style: solid; border-width: 1px; border-color: black;
+}
+
+
+
+#StrainSubmit
+{
+position: absolute;
+top: 90%;
+left: 60%;
+height: 20px;
+width: 20%;
+background-color: #eeeeee;
+z-index: 1;
+}
+
+.topBarSelect
+{
+position: absolute;
+top: 50px;
+left: 400pf
+width: 100px;
+height: 50px;
+text-align: right;
+background-color: #555555;
+z-index: 2;
+}
+
+h4 {text-align: right}
+
+#SampleSearchSCode
+{
+position: absolute;
+top: 120px;
+left: 160px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchType
+{
+position: absolute;
+top: 120px;
+left: 390px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchSourceTemp
+{
+position: absolute;
+top: 190px;
+left: 160px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchCollector
+{
+position: absolute;
+top: 190px;
+left: 390px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchCollectionSite
+{
+position: absolute;
+top: 190px;
+left: 600px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchSubmitter
+{
+position: absolute;
+top: 250px;
+left: 160px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SampleSearchSubmit
+{
+position: absolute;
+top: 300px;
+left: 260px;
+width: 150px;
+height: 20px;
+background-color: #eeeeee;
+z-index: 1;
+}
+
+#SourceSearchName
+{
+position: absolute;
+top: 120px;
+left: 160px;
+width: 170px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SourceSearchAddress
+{
+position: absolute;
+top: 120px;
+left: 400px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+#SourceSearchSubmit
+{
+position: absolute;
+top: 180px;
+left: 300px;
+width: 150px;
+height: 20px;
+background-color: #eeeeee;
+z-index: 1;
+}
+
+#homenews
+{
+position: absolute;
+top: 160px;
+left: 200px;
+height: 600px;
+width: 800px;
+z-index: 1;
+background-color: #eeeeee;
+overflow: visible;
+}
+
+#results
+{
+position: absolute;
+top: 160px;
+left: 200px;
+height: 600px;
+width: 800px;
+z-index: 1;
+background-color: #eeeeee;
+overflow: visible;
+}
+
+.bl {position: absolute; background: url('[%c.uri_for("/src/bottomleft2.jpg")%]') 0 100% no-repeat #4444ee; color: #dddddd}
+.br {background: url('[%c.uri_for("/src/bottomright2.jpg")%]') 100% 100% no-repeat}
+.tl {background: url('[%c.uri_for("/src/topleft2.jpg")%]') 0 0 no-repeat}
+.tr {background: url('[%c.uri_for("/src/topright2.jpg")%]') 100% 0 no-repeat; padding: 10px;}
+.clear {font-size: 1px; height: 1px}
+
+.bl a:hover
+{
+color: #dddddd;
+}
+.bl a:link {color: #dddddd;}
+.bl a:active {color: #dddddd;}
+.bl a:visited {color: #dddddd;}
+
+#loutclick
+{
+position: absolute;
+top: 60%;
+width: 70px;
+height: 20px;
+left: 90%;
+background-color: #4444ee;
+color: #dddddd;
+z-index: 1;
+}
+#loutclick:hover
+{
+background-color: #6666ff;
+}
+
+#biotoolsmenu
+{
+position: absolute;
+top: 60%;
+width: 150px;
+height: 20px;
+left: 65%;
+background-color: #4444ee;
+color: #dddddd;
+z-index: 1;
+}
+
+#topmenu1
+{
+position: absolute;
+top: 60%;
+width: 150px;
+height: 20px;
+background-color: #4444ee;
+color: #dddddd;
+z-index: 1;
+}
+
+
+
+#aboutclick
+{
+position: absolute;
+top: 60%;
+height: 20px;
+width: 100px;
+left: 82%;
+background-color: #4444ee;
+z-index: 1;
+}
+
+#searchtopmenu
+{
+position: absolute;
+top: 60%;
+height: 20px;
+width: 70px;
+left: 55%;
+background-color: #4444ee;
+z-index: 1;
+}
+
+
+
+a:hover
+{
+color: #dddddd;
+}
+a:link {color: #333333;}
+a:active {color: #333333;}
+a:visited {color: #333333;}
+
+#pagename
+{
+position:absolute;
+top: 13%;
+left: 15%;
+width: 90%;
+height: 7%;
+z-index: 1;
+}
+
+.menu a:hover
+{
+color: #333333;
+}
+#biotoolsmenu a:link {color: #333333;}
+#biotoolsmenu a:active {color: #333333;}
+#biotoolsmenua:visited {color: #333333;}
+
+body
+{
+overflow: scroll;
+}
+

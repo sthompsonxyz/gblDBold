@@ -1,0 +1,72 @@
+<style type="text/css">
+[% PROCESS strainshow.css %]
+</style>
+
+[% PROCESS mainmenu.tt2 pagename =  gblstraincode %]
+
+    <div id ="recordspace">
+ 
+    
+    
+     <div id="strainshowAccNos">
+<b>Strain Identity</b><br>
+<table cellpadding='3' border='1'><tr>
+<th align='center'>GBL Accession Number</th><th>Strain Code</th><th>Sample Code</th></tr>
+<tr align='center'><td align>[% straindata.0.strains.gbl_accession_number %]</td><td>[% straindata.0.strains.strain_code %]</td><td>[% straindata.0.strains.sample.sample_code %]</td></tr></table><br>
+<div>
+<table cellpadding='3'>
+<tr align='center'><th>Taxonomy</th><th></th><th></th><th>NCBI TaxonID</th><th>Method of ID</th></tr>
+[% FOREACH taxonomy IN straindata %]
+[% IF taxonomy.use_record == 'Y' %]
+<tr align='center'><td> [% taxonomy.phylogenies.genus %] </td><td> [% taxonomy.phylogenies.species %]</td><td>[% taxonomy.phylogenies.subspecies %] </td><td> <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=[% taxonomy.phylogenies.ncbiref %]&lvl=1&srchmode=5&unlock"> [% taxonomy.phylogenies.ncbiref %] </a> </td> <td> 
+[% IF taxonomy.method == 'Sequencing' %]
+<a href=[% c.uri_for('showsequence', taxonomy.strains.gbl_accession_number) %]>Sequencing</a>
+[% ELSE %]
+[% taxonomy.method %]
+[% END %]
+
+</td></tr> [% END %]
+[% END %]
+
+</table></div><br>
+
+<b>Growth conditions</b><br>
+<table cellpadding='3' border='1'>
+<tr align='center'><th>Media</th><th>Temperature</th><th></th><th></th><th>pH</th><th></th><th></th> <th>Aerobicity</th></tr>
+<tr align='center'><td> [% straindata.0.strains.medium %] </td><td> [% straindata.0.strains.temperature %] </td> <td> [% IF straindata.0.strains.min_temperature %] Min: [% straindata.0.strains.min_temperature %] [% END %] </td> <td> [% IF straindata.0.strains.max_temperature %] Max: [% straindata.0.strains.max_temperature %] [% END %] </td> <td> [% straindata.0.strains.ph %] </td> <td> [% IF straindata.0.strains.min_ph %] Min: [% straindata.0.strains.min_ph %] [% END %] </td> <td> [% IF straindata.0.strains.max_ph %] Max: [% straindata.0.strains.max_ph %] [% END %] </td> <td> ** </td> </tr>
+</table><br>
+
+<b>Storage Information</b><br>
+<table cellpadding='3' border='1'>
+<tr align='center'><th>Box number</th><th>No. of Tubes</th><th>Viable?</th><th>Pure?</th><th>Bead storage?</th><th>Freeze dried?</th></tr>
+<tr align='center'><td>[% straindata.0.strains.box_number %]</td><td>[% straindata.0.strains.number_of_tubes %]</td><td>[% straindata.0.strains.viable %]</td><td>[% straindata.0.strains.pure %]</td><td>**</td><td>**</td></tr>
+</table><br>
+<b>Colony Characteristics</b><br><br>
+<table cellpadding='3' border='1'>
+<tr align='center'><th>Perimeter</th><th>Profile</th><th>Texture</th><th>Transparency</th><th>Colour</th><th>Diameter</th><tr>
+<tr align='center'><td>[% straindata.0.strains.colony_perimeter %]</td><td>[% straindata.0.strains.colony_profile %]</td><td>[% straindata.0.strains.colony_texture %]</td><td>[% straindata.0.strains.colony_transparency %]</td><td>[% straindata.0.strains.colony_colour %]</td><td[% straindata.0.strains.colony_diameter %]</td></tr>
+</table><br><br>
+<b>Other Strain Qualities</b><br>
+<table cellpadding='3' border='1'>
+<tr align='center'><th>Pigment</th><th>Cell shape</th><th>Spore type</th><th>Spore shape</th><th>Motility</th><th>Transformable</th></tr>
+<tr align='center'><td>[% straindata.0.strains.pigment %]</td><td>[% straindata.0.strains.cell_shape %]</td><td>[% straindata.0.strains.spore_type %]</td><td>**</td><td>[% straindata.0.strains.motile %]</td><td>[% straindata.0.strains.transformable %]</td></tr>
+</table><br><br>
+<b>Identity Tests and Biochemical Characteristics</b><br>
+<table cellpadding='3' border='1'>
+<tr align='center'><th>Catalase</th><th>Gram stain</th></tr>
+<tr align='center'><td>[% straindata.0.strains.catalase %]</td><td>[% straindata.0.strains.gram_stain %]</td></tr>
+</table><br>
+<br>
+<b>Comments</b><br>
+<table cellpadding='3' border='1'>
+<tr align='left'><td>
+[% straindata.0.strains.comment %]
+</td>
+</tr>
+</table>
+
+</div>
+     
+
+    
+</div>

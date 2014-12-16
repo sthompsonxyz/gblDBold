@@ -1,0 +1,16 @@
+
+[% PROCESS mainmenu.tt2 pagename = "Source Search Results" %]
+
+    <div id ="results">
+    <table cellpadding='3'>
+    <tr><th>Source Name</th><th>Source Address</th></tr>
+    
+    [% FOREACH source IN gblsourcesearch -%]
+      <tr>
+        <td align='center'>[% source.site_name %]</td>
+        <td align='center'>[% source.site_address %]</td>
+
+      </tr>
+    [% END -%]
+    </table>
+</div>

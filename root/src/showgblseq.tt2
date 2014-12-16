@@ -1,0 +1,21 @@
+<style type="text/css">
+#seqshow
+{
+position: absolute;
+top: 5px;
+left: 5px;
+width: 600px;
+height: 800px;
+z-index: 1;
+word-wrap: break-word;
+}
+</style>
+
+<div id="seqshow">
+[% FOREACH thisseq IN seqs %]
+[% IF (thisseq.use_record == 'Y' AND thisseq.fasta16s) %]
+[% thisseq.fasta16s %] <br><br>
+[% END %]
+
+[% END %]
+</div>

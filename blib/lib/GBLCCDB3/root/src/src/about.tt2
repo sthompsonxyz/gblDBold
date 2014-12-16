@@ -1,0 +1,29 @@
+<div id="topLico">
+
+</div>
+
+<div id="topBar">
+<h3>GBL DB Web UI v0.2.0</h3><br>
+<h3>Main page</h3>
+
+</div>
+
+<div id="leftBar">
+<a href = "/">Home</a><br>
+<a href = "/gblstrain">Strain</a><br>
+<a href = "/gblsample">Sample</a><br>
+<a href = "/gblsource">Source</a><br>
+<a href = "/about">About</a><br>
+LogOff
+
+</div>
+
+<div id="homenews">
+<b>About GBL Culture Collection Database version 0.2.2</b><br>
+Developed by Samantha Thompson 2008<br>
+<br>
+Implemented using:<br>
+Catalyst<br>
+Perl 5.10.0<br>
+</div>
+

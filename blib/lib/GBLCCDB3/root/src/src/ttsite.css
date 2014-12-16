@@ -1,0 +1,480 @@
+
+html {
+    height: 100%;
+}
+
+body { 
+    background-color: #cccccc;
+    color: [% site.col.text %];
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+#header {
+    background-color: [% site.col.head %];
+    border-bottom: 1px solid [% site.col.line %];
+}
+
+#footer {
+    background-color: [% site.col.head %];
+    text-align: center;
+    border-top: 1px solid [% site.col.line %];
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+    padding: 4px;
+}
+
+#content {
+    padding: 10px;
+}
+
+h1.title {
+    padding: 4px;
+    margin: 0px;
+}
+
+.message {
+    color: [% site.col.message %];
+}
+
+.error {
+    color: [% site.col.error %];
+}
+
+#topLico
+{
+position:absolute;
+top: 5px;
+left: 5px;
+width: 100px;
+height: 100px;
+z-index: 1;
+background-image: url('/greenIco.GIF');
+}
+
+#topBar
+{
+position: absolute;
+top: 5px;
+left: 120px;
+height: 100px;
+width: 680px;
+background-color: #dddddd;
+z-index: 1;
+line-height: 30%;
+}
+
+#leftBar
+{
+position:absolute;
+top: 110px;
+left 5px;
+height: 300px;
+width: 100px;
+background-color: #555599;
+z-index: 1;
+}
+
+#StrainSearchStrainCode
+{
+position:absolute;
+top: 110px;
+left: 120px;
+height: 35px;
+width: 180px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchGBLAccNo
+{
+position:absolute;
+top: 110px;
+left: 310px;
+height: 35px;
+width: 250px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchSample
+{
+position:absolute;
+top: 110px;
+left: 570px;
+height: 35px;
+width: 230px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchOrg
+{
+position:absolute;
+top: 150px;
+left: 120px;
+height: 45px;
+width: 250px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchTempRange
+{
+position:absolute;
+top: 150px;
+left: 380px;
+height: 45px;
+width: 200px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchpH
+{
+position:absolute;
+top: 150px;
+left: 590px;
+height: 45px;
+width: 210px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchViable
+{
+position:absolute;
+top: 200px;
+left: 120px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchPure
+{
+position:absolute;
+top: 200px;
+left: 280px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchBeads
+{
+position:absolute;
+top: 200px;
+left: 440px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchFreezeDried
+{
+position:absolute;
+top: 200px;
+left: 600px;
+height: 35px;
+width: 200px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchColonChars
+{
+position:absolute;
+top: 240px;
+left: 120px;
+height: 190px;
+width: 200px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchPigment
+{
+position:absolute;
+top: 240px;
+left: 330px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchCellShape
+{
+position:absolute;
+top: 240px;
+left: 490px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchSporeType
+{
+position:absolute;
+top: 240px;
+left: 650px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchSporeShape
+{
+position:absolute;
+top: 280px;
+left: 330px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchMotile
+{
+position:absolute;
+top: 280px;
+left: 490px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchTransformable
+{
+position:absolute;
+top: 280px;
+left: 650px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchCatalaseTest
+{
+position:absolute;
+top: 320px;
+left: 330px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchGramStain
+{
+position:absolute;
+top: 320px;
+left: 490px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchAerobicGr
+{
+position:absolute;
+top: 370px;
+left: 330px;
+height: 35px;
+width: 170px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchBoxNo
+{
+position:absolute;
+top: 435px;
+left: 120px;
+height: 35px;
+width: 150px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchNoTubes
+{
+position:absolute;
+top: 435px;
+left: 280px;
+height: 35px;
+width: 200px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSearchSubmitter
+{
+position:absolute;
+top: 370px;
+left: 510px;
+height: 35px;
+width: 250px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#StrainSubmit
+{
+position: absolute;
+top: 435px;
+left: 540px;
+height: 20px;
+width: 220px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+.topBarSelect
+{
+position: absolute;
+top: 50px;
+left: 400pf
+width: 100px;
+height: 50px;
+text-align: right;
+background-color: #555555;
+z-index: 2;
+}
+
+h4 {text-align: right}
+
+#SampleSearchSCode
+{
+position: absolute;
+top: 120px;
+left: 120px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchType
+{
+position: absolute;
+top: 120px;
+left: 330px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchSourceTemp
+{
+position: absolute;
+top: 190px;
+left: 120px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchCollector
+{
+position: absolute;
+top: 190px;
+left: 330px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchCollectionSite
+{
+position: absolute;
+top: 190px;
+left: 540px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchSubmitter
+{
+position: absolute;
+top: 250px;
+left: 120px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SampleSearchSubmit
+{
+position: absolute;
+top: 300px;
+left: 200px;
+width: 150px;
+height: 20px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#SourceSearchName
+{
+position: absolute;
+top: 120px;
+left: 120px;
+width: 170px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SourceSearchAddress
+{
+position: absolute;
+top: 120px;
+left: 300px;
+width: 200px;
+height: 50px;
+z-index: 1;
+background-color: #cccccc;
+}
+
+#SourceSearchSubmit
+{
+position: absolute;
+top: 180px;
+left: 200px;
+width: 50px;
+height: 20px;
+background-color: #cccccc;
+z-index: 1;
+}
+
+#homenews
+{
+position: absolute;
+top: 120px;
+left: 120px;
+height: 600px;
+width: 800px;
+z-index: 1;
+background-color: #eeeeee;
+}
+
+

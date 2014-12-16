@@ -1,0 +1,57 @@
+<div id="topLico">
+
+</div>
+
+<div id="topBar">
+<h3>GBL DB Web UI v0.2.0</h3><br>
+
+<h3>Sample search</h3>
+
+</div>
+
+<div id="leftBar">
+<a href = "/">Home</a><br>
+<a href = "/gblstrain">Strain</a><br>
+<a href = "/gblsample">Sample</a><br>
+<a href = "/gblsource">Source</a><br>
+<a href = "/about">About</a><br>
+LogOff
+
+</div>
+
+<FORM action="/DB_v0_2_0/bin/samplesearch.pl" method="POST">
+<div id="SampleSearchSCode">
+Sample Code:
+<input type="text" name="sampCode" val="">
+</div>
+
+<div id="SampleSearchType">
+Sample type
+<input type="text" name="sampType" val="">
+</div>
+
+<div id="SampleSearchSourceTemp">
+Source temperature
+<input type="text" name="sourceTemp" val="">
+</div>
+
+<div id="SampleSearchCollector">
+Collector
+<input type="text" name="collector" val="">
+</div>
+
+<div id="SampleSearchCollectionSite">
+Collection site
+<input type="text" name="collSite" val="">
+</div>
+
+<div id="SampleSearchSubmitter">
+Submitter
+<input type="text" name="submitter" val="">
+</div>
+<div id="SampleSearchSubmit">
+<input type="button" value="Clear" onClick="clearAll()">
+
+<input type="submit" value="Search">
+</form>
+

@@ -1,0 +1,151 @@
+<div id="topLico">
+
+</div>
+
+<div id="topBar">
+<h3>GBL DB Web UI v0.2.0</h3><br>
+<h3>Strain search</h3>
+
+</div>
+
+<div id="leftBar">
+<a href = "/">Home</a><br>
+<a href = "/gblstrain">Strain</a><br>
+<a href = "/gblsample">Sample</a><br>
+<a href = "/gblsource">Source</a><br>
+<a href = "/about">About</a><br>
+LogOff
+
+</div>
+
+<form action="/DB_v0_2_0/bin/gbldbform1" method="POST">
+<div id="StrainSearchStrainCode">
+Strain Code: <input type="text" name="strainCode" value="" size="10"/>
+
+</div>
+
+<div id="StrainSearchGBLAccNo">
+GBL Accession No.: <input type="text" name="gblAccNo" value="" size="10"/>
+</div>
+
+<div id="StrainSearchSample">
+Sample Code: <input type="text" name="sampleCode" value="" size="10"/>
+</div>
+
+<div id="StrainSearchOrg">
+Organism <input type="text" name="organism" value="makecombo" size="15" disabled='true'/>
+</div>
+
+<div id="StrainSearchBoxNo">
+BoxNo: <input type="text" name="boxNo" value="" size="2"/>
+</div>
+
+<div id="StrainSearchNoTubes">
+Number of Tubes: <input type="text" name="noOfTubes" value="" size="2" disabled='true'/>
+</div>
+
+<div id="StrainSearchViable">
+Viable: <select name="viability"> <option value="Unk">Unknown </option> <option value='Y'>Yes </option>
+
+<option value='N'>No</option></select>
+</div>
+
+<div id="StrainSearchPure">
+Pure: <select name="purity" disabled='true'> <option value="Unk">Unknown </option> <option value="1">Yes </option>
+<option value="0">No</option></select>
+</select>
+</div>
+
+<div id="StrainSearchBeads">
+
+Beads: <select name="bBeads" disabled='true'> <option value="Unk">Unknown</option> <option value="1">Yes </option>
+<option value="0">No</option></select>
+</div>
+
+<div id="StrainSearchFreezeDried">
+Freeze dried: <select name="bFreezeDried" disabled='true'> <option value="Unk">Unknown</option> <option value="1">Yes </option>
+
+<option value="0">No</option></select>
+</div>
+
+<div id="StrainSearchColonChars">
+
+Colony characteristics:
+<table border="0">
+<tr><td align='center'>Perimeter: </td>   <td> <input type="text" name="szPerimeter" value="" size="10" disabled='true'/></td></tr>
+<tr><td align='center'>Profile: </td>    <td>  <input type="text" name="szProfile" value="" size="10" disabled='true'/></td><tr>
+<tr><td align='center'>Texture:  </td>    <td> <input type="text" name="szTexture" value="" size="10" disabled='true'/></td></tr>
+
+<tr><td align='center'>Transparency:</td> <td> <input type="text" name="szTransparency" value="" size="10" disabled='true'/></td></tr>
+<tr><td align='center'>Colour:        </td><td><input type="text" name="szColour" value="" size="10" disabled='true'/></td></tr>
+<tr><td align='center'>Diameter:     </td><td> <input type="text" name="szDiameter" value="" size="10" disabled='true'/></td></tr>
+</table>
+</div>
+
+<div id="StrainSearchPigment">
+Pigment:<br> <input type="text" name="szPigment" value="" size="10" />
+</div>
+
+<div id="StrainSearchCellShape">
+Cell shape:<br> <input type="text" name="szCellShape" value="" size="10" disabled='true'/>
+</div>
+
+<div id="StrainSearchSporeType">
+Spore type:<br> <input type="text" name="szSporeType" value="" size="10" disabled='true'/>
+</div>
+
+<div id="StrainSearchSporeShape">
+Spore shape:<br> <input type="text" name="szSporeShape" value="" size="10" disabled='true'/>
+
+  
+</div>
+
+<div id="StrainSearchMotile">
+Motility:<br> <input type="text" name="szMotile" value="" size="10" disabled='true'/>
+</div>
+
+<div id="StrainSearchTransformable">
+Transformable:<br> <select name="bTransformable" disabled='true'> <option value="Unk">Unknown</option> <option value="1">Yes </option>
+
+<option value="0">No</option></select>
+</div>
+
+<div id="StrainSearchCatalaseTest">
+Catalase test: <br><select name="bCatalase" disabled='true'> <option value="Unk">Unknown</option> <option value="1">Positive </option>
+<option value="0">Negative</option></select>
+</div>
+
+<div id="StrainSearchGramStain">
+Gram stain <br><select name="bGram" disabled='true'> <option value="Unk">Unknown</option> <option value="1">Positive </option>
+
+<option value="0">Negative</option></select>
+</div>
+
+<div id="StrainSearchTempRange">
+Temperature<br> from <input type="text" name="tempLowerRange" value="" size="2" /> to <input type="text" name="tempUpperRange" value=""
+size="2" />
+</div>
+
+<div id="StrainSearchpH">
+pH<br> from <input type="text" name="pHLowerRange" value="" size="2" disabled='true'/> to <input type="text" name="pHUpperRange" value="" size="2"
+disabled='true'/>
+
+</div>
+
+<div id="StrainSearchAerobicGr">Aerobicity:<br> <select name="aerobicity" MULTIPLE size="2" disabled='true'> <option value="Obligate Aerobe" />Obligate aerobe
+<option value="Obligate anaerobe" />Obligate anaerobe <option value="Facultative Anaerobe" />Facultative anaerobe
+</select>
+</div>
+
+<div id="StrainSearchSubmitter">
+Submitter: <input type="text" name="szSubmitter" value="" disabled='true'/>
+</div>
+
+<div id="StrainSubmit">
+
+<input type="button" value="Clear" onClick="clearAll()">
+<input type="submit" value="Search" />
+</div>
+
+</form>
+

@@ -1,0 +1,59 @@
+[% PROCESS mainmenu.tt2 pagename = "About" %]
+
+<div id="homenews">
+<b>About GBL Culture Collection Database version 0.2.3</b><br>
+  by S. Thompson 2008<br>
+<br>
+Implemented using:<br>
+Catalyst<br>
+Perl 5.10.0<br><br><br><br>
+.................................................................................<br>
+<b>GBL DB Latest developments...</b>
+<br>
+<b>Planned functionality for future versions:<br></b>
+View:<br>
+Combobox/treeview for organism searching, ->genus->species<br>
+(general implementation of UI widgets appropriate to task<br>
+Control:<br>
+Implement full CRUD (create, read, update, delete) and appropriate user authorisation<br>
+Printable results. Customise results<br>
+Model:<br>
+Incorporate new fields (biochem tests/metabo. utilisation)(make 16s BLASTable)<br><br>
+<b>v0.2.3:</b><br>
+New look, Data paging, Drop down Menus, Moved development info to about section (probably needs its own dev section), Included 16s sequence data and is available in FASTA format, organism name connects to NCBI taxon ID and local characterisation method<br><br>
+<b>v0.2.2b Implementing record views</b><br>
+Most fields within strain record searchable<br>
+Strain search results present link to strain record<br>
+Strain records containing most strain data<br>
+Can search strain by organism genus and species name<br>
+Sample list links to sample records **many links broken due to codes containing '/'<br><br>
+
+<b>v0.2.2: ..0.2.1 ported to Catalyst MVC framework</b><br>
+Authentication in place (username/pword login/logout sessions.<br>
+Now running on Fedora 9 in VMWare Server.<br>
+First view to local users!<br>
+<br>
+<b>v0.2.1: </b><br>
+Sample and Site/source search implemented. <br>
+Strain output expanded. <br>
+<br>
+<b>V.0.2.0: Initial Reimplementation, UI Prototype</b>
+<br>
+A prototype displaying the very basic database access functionality.<br>
+Also including search form into single page view for better user/readability vs. v0.1<br>
+Search results delivered on separate page<br>
+Contains only a strain search page option, with limited available fields for forming queries.<br>
+Strains can be searched by: GBL Acc. No., Strain Code, Sample Code, Box Number.<br>
+
+Clear field button implemented.<br>
+Demonstrates possible colour scheme!<br>
+Allows submission of (limited)field values via CGI and DBI (implemented in Perl), data returned from<br>
+MySQL database is returned and displayed with limited headings and no further connectivity.<br>
+
+
+--------------------------------------------------------------------------
+<br>
+<b>V0.1 : Original GBL DB Implementation</b>
+<br><br><br><br>
+</div>
+

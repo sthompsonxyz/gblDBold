@@ -1,0 +1,17 @@
+[% PROCESS mainmenu.tt2 pagename = "<h2>GBL Culture Collection Database</h2>" %]
+
+<div id="homenews">
+<br>
+<br>
+<h2>Search</h2><br>
+Search for <a href=[%c.uri_for('/gblstrain')%]> strains</a>, <a href=[%c.uri_for('/gblsample')%]> samples</a> or <a href=[%c.uri_for('/gblsource')%]> sample sources</a><br>
+
+<h2>Tools</h2><br>
+A slowly developing collection of hopefully useful molecular biology/bioinformatics <a href=[%c.uri_for('/samsbiotools')%]>tools</a>.
+
+
+
+</div>
+
+
+

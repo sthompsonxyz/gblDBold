@@ -1,0 +1,243 @@
+package GBLCCDB3::Controller::samsbiotools;
+
+use strict;
+use warnings;
+use parent 'Catalyst::Controller';
+use Bio::Seq;
+use Bio::SeqIO;
+use Bio::Tools::SeqStats;
+use Bio::Tools::Run::StandAloneBlast;
+
+=head1 NAME
+
+GBLCCDB3::Controller::samsbiotools - Catalyst Controller
+
+=head1 DESCRIPTION
+
+Catalyst Controller.
+
+=head1 METHODS
+
+=cut
+
+
+=head2 index 
+
+=cut
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->stash->{template} = "samsbiotools.tt2";
+}
+
+sub degenprimers :Local {
+	my( $self, $c) = @_;
+
+	$c->stash->{template} = "degenprimers.tt2";
+}
+
+sub degencalc :Local {
+
+	my( $self, $c ) = @_;
+
+	my $peptide = $c->request->params->{peptide};
+
+	my @AminoAcids = ('F', 'L', 'S', 'Y', 'C', 'W', 'P', 'H', 'Q', 'R', 'I', 'M', 'T', 'N', 'K', 'V', 'A', 'D', 'E', 'G');
+	#B = GTC comp is V
+	#D = GAT comp is H
+	#H = ATC comp is D
+	#K = GT comp is M
+	#M = AC comp is K 
+	#N = ACGT comp is N
+	#R = AG comp is Y
+	#S = GC comp is S
+	#V = ACG comp is B
+	#W = AT comp is W
+	#Y = CT comp is R
+	# AAs.. F: TTY/AAR/RAA , L: YTN/RAN/NAR , S: WSN/WSN/NSW , Y: TAY/ATR/RTA, C: TGY/ACR/RCA, W: TGG/ACC/CCA, P: CCN/GGN/NGG, H: CAY/GTR/RTG, Q: CAR/GTY/YTG, R: MGN/KCN/NCK, I: ATH/TAD/DAT, M: ATG/TAC/CAT, T: ACN/TGN/NGT, N: AAY/TTR/RTT,
+	# ..... K: AAR/TTY/YTT, V: GTN/CAN/NAC, A: GCN/CGN/NGC, D: GAY/CTR/RTC, E: GAR/CTY/YTC, G: GGN/CCN/NCC.
+
+	my @degenseq = ({'F' => "TTY", 'L' => "YTN", 'S' => "WSN", 'Y' => "TAY", 'C' => "TGY", 'W' => "TGG", 'P' => "CCN", 'H' => "CAY", 'Q' => "CAR", 'R' => "MGN", 'I' => "ATH", 'M' => "ATG", 'T' => "ACN", 'N' => "AAY", 'K' => "AAR", 'V' => "GTN", 'A' => "GCN", 'D' => "GAY", 'E' => "GAR", 'G' => "GGN"},
+{F => "AAR", L => "RAN", S => "WSN", Y => "ATR", C => "ACR", W => "ACC", P => "GGN", H => "GTR", Q => "GTY", R => "KCN", I => "TAD", M => "TAC", T => "TGN", N => "TTR", K => "TTY", V => "CAN", A => "CGN", D => "CTR", E => "CTY", G => "CCN"},
+{F => "RAA", L => "NAR", S => "NSW", Y => "RTA", C => "RCA", W => "CCA", P => "NGG", H => "RTG", Q => "YTG", R => "NCK", I => "DAT", M => "CAT", T => "NGT", N => "RTT", K => "YTT", V => "NAC", A => "NGC", D => "RTC", E => "YTC", G => "NCC"},
+{F => 2, L => 8, S => 16, Y => 2, C => 2, W => 1, P => 4, H => 2, Q => 2, R => 8, I => 3, M => 1, T => 4, N => 2, K => 2, V => 4, A => 4, D => 2, E => 2, G => 4}
+);
+
+	
+	
+	$peptide =~ s/^\s+//;
+	$peptide =~ s/\s+$//;
+
+	$c->stash->{degenseq} = uc $peptide; 
+	$c->stash->{peptlength} = length $peptide;
+
+	my $i;
+	my $peptchar = "";
+	my $peptout = "";
+	my $degenprimer_f = "";
+	my $degenprimer_fcomp = "";
+	my $degenprimer_r = "";
+	my $degeneracy = 1;
+
+	for($i = 0; $i < (length $peptide); $i++)
+	{
+		$peptchar = uc substr($peptide, $i, 1);
+		$peptout.= $peptchar;
+		$peptout.= "<br>";
+		
+		$degenprimer_f.= $degenseq[0]{$peptchar};
+		$degenprimer_fcomp.= $degenseq[1]{$peptchar};
+
+		$degeneracy = $degeneracy * $degenseq[3]{$peptchar};
+
+		$peptchar = "";
+
+		
+	}
+
+	$c->stash->{degenprimer_f} = $degenprimer_f;
+	$c->stash->{degenprimer_fcomp} = $degenprimer_fcomp;
+
+	$degenprimer_r = reverse $degenprimer_fcomp;
+
+	$c->stash->{degenprimer_r} = $degenprimer_r;
+
+	$c->stash->{degeneracy} = $degeneracy;
+
+	$c->stash->{template} = "degenoutput.tt2";
+}
+
+sub degenpatterncalc :Local{
+	my ($self, $c) = @_;
+	
+	my @degennucaln = ({'GG' => 'G', 'GA' => 'R', 'GT' => 'K', 'GC' => 'S', 'GB' => 'B', 'GD' => 'D', 'GH' => 'N', 'GK' => 'K', 'GM' => 'V', 'GN' => 'N', 'GR' => 'R', 'GS' => 'S', 'GV' => 'V', 'GW' => 'D', 'GY' => 'B'},
+				{'AG' => 'R', 'AA' => 'A', 'AT' => 'W', 'AC' => 'M', 'AB' => 'N', 'AD' => 'D', 'AH' => 'H', 'AK' => 'D', 'AM' => 'M', 'AN' => 'N', 'AR' => 'R', 'AS' => 'V', 'AV' => 'V', 'AW' => 'W', 'AY' => 'H'},
+{'TG' => 'K', 'TA' => 'W', 'TT' => 'T', 'TC' => 'Y', 'TB' => 'B', 'TD' => 'D', 'TH' => 'H', 'TK' => 'K', 'TM' => 'H', 'TN' => 'N', 'TR' => 'D', 'TS' => 'B', 'TV' => 'N', 'TW' => 'W', 'TY' => 'Y'},
+{'CG' => 'S', 'CA' => 'M', 'CT' => 'Y', 'CC' => 'C', 'CB' => 'B', 'CD' => 'N', 'CH' => 'H', 'CK' => 'B', 'CM' => 'M', 'CN' => 'N', 'CR' => 'V', 'CS' => 'S', 'CV' => 'V', 'CW' => 'H', 'CY' => 'Y'},
+{'BG' => 'B', 'BA' => 'N', 'BT' => 'B', 'BC' => 'B', 'BB' => 'B', 'BD' => 'N', 'BH' => 'N', 'BK' => 'B', 'BM' => 'N', 'BN' => 'N', 'BR' => 'N', 'BS' => 'B', 'BV' => 'N', 'BW' => 'N', 'BY' => 'B'},
+{'DG' => 'D', 'DA' => 'D', 'DT' => 'D', 'DC' => 'N', 'DB' => 'N', 'DD' => 'D', 'DH' => 'N', 'DK' => 'D', 'DM' => 'D', 'DN' => 'N', 'DR' => 'D', 'DS' => 'N', 'DV' => 'N', 'DW' => 'D', 'DY' => 'N'},
+{'HG' => 'N', 'HA' => 'H', 'HT' => 'H', 'HC' => 'H', 'HB' => 'N', 'HD' => 'N', 'HH' => 'H', 'HK' => 'N', 'HM' => 'H', 'HN' => 'N', 'HR' => 'N', 'HS' => 'N', 'HV' => 'N', 'HW' => 'H', 'HY' => 'H'},
+{'KG' => 'K', 'KA' => 'D', 'KT' => 'K', 'KC' => 'B', 'KB' => 'B', 'KD' => 'D', 'KH' => 'N', 'KK' => 'K', 'KM' => 'N', 'KN' => 'N', 'KR' => 'D', 'KS' => 'B', 'KV' => 'N', 'KW' => 'D', 'KY' => 'B'},
+{'MG' => 'V', 'MA' => 'M', 'MT' => 'H', 'MC' => 'M', 'MB' => 'N', 'MD' => 'N', 'MH' => 'H', 'MK' => 'N', 'MM' => 'M', 'MN' => 'N', 'MR' => 'V', 'MS' => 'V', 'MV' => 'V', 'MW' => 'H', 'MY' => 'H'},
+{'NG' => 'N', 'NA' => 'N', 'NT' => 'N', 'NC' => 'N', 'NB' => 'N', 'ND' => 'N', 'NH' => 'N', 'NK' => 'N', 'NM' => 'N', 'NN' => 'N', 'NR' => 'N', 'NS' => 'N', 'NV' => 'N', 'NW' => 'N', 'NY' => 'N'},
+{'RG' => 'R', 'RA' => 'R', 'RT' => 'D', 'RC' => 'V', 'RB' => 'N', 'RD' => 'D', 'RH' => 'N', 'RK' => 'D', 'RM' => 'V', 'RN' => 'N', 'RR' => 'R', 'RS' => 'V', 'RV' => 'V', 'RW' => 'D', 'RY' => 'N'},
+{'SG' => 'S', 'SA' => 'V', 'ST' => 'B', 'SC' => 'S', 'SB' => 'B', 'SD' => 'N', 'SH' => 'N', 'SK' => 'B', 'SM' => 'V', 'SN' => 'N', 'SR' => 'V', 'SS' => 'S', 'SV' => 'V', 'SW' => 'N', 'SY' => 'B'},
+{'VG' => 'V', 'VA' => 'V', 'VT' => 'N', 'VC' => 'V', 'VB' => 'N', 'VD' => 'N', 'VH' => 'N', 'VK' => 'N', 'VM' => 'V', 'VN' => 'N', 'VR' => 'V', 'VS' => 'V', 'VV' => 'V', 'VW' => 'N', 'VY' => 'N'},
+{'WG' => 'D', 'WA' => 'W', 'WT' => 'W', 'WC' => 'H', 'WB' => 'N', 'WD' => 'D', 'WH' => 'H', 'WK' => 'D', 'WM' => 'H', 'WN' => 'N', 'WR' => 'D', 'WS' => 'N', 'WV' => 'N', 'WW' => 'W', 'WY' => 'H'},
+{'YG' => 'B', 'YA' => 'H', 'YT' => 'Y', 'YC' => 'Y', 'YB' => 'B', 'YD' => 'N', 'YH' => 'H', 'YK' => 'B', 'YM' => 'H', 'YN' => 'N', 'YR' => 'N', 'YS' => 'B', 'YV' => 'N', 'YW' => 'H', 'YY' => 'Y'});
+
+	my $peptide = $c->request->params->{peptide};
+
+	my @AminoAcids = ('F', 'L', 'S', 'Y', 'C', 'W', 'P', 'H', 'Q', 'R', 'I', 'M', 'T', 'N', 'K', 'V', 'A', 'D', 'E', 'G');
+	#B = GTC comp is V
+	#D = GAT comp is H
+	#H = ATC comp is D
+	#K = GT comp is M
+	#M = AC comp is K 
+	#N = ACGT comp is N
+	#R = AG comp is Y
+	#S = GC comp is S
+	#V = ACG comp is B
+	#W = AT comp is W
+	#Y = CT comp is R
+	# AAs.. F: TTY/AAR/RAA , L: YTN/RAN/NAR , S: WSN/WSN/NSW , Y: TAY/ATR/RTA, C: TGY/ACR/RCA, W: TGG/ACC/CCA, P: CCN/GGN/NGG, H: CAY/GTR/RTG, Q: CAR/GTY/YTG, R: MGN/KCN/NCK, I: ATH/TAD/DAT, M: ATG/TAC/CAT, T: ACN/TGN/NGT, N: AAY/TTR/RTT,
+	# ..... K: AAR/TTY/YTT, V: GTN/CAN/NAC, A: GCN/CGN/NGC, D: GAY/CTR/RTC, E: GAR/CTY/YTC, G: GGN/CCN/NCC.
+
+	my @degenseq = ({'F' => "TTY", 'L' => "YTN", 'S' => "WSN", 'Y' => "TAY", 'C' => "TGY", 'W' => "TGG", 'P' => "CCN", 'H' => "CAY", 'Q' => "CAR", 'R' => "MGN", 'I' => "ATH", 'M' => "ATG", 'T' => "ACN", 'N' => "AAY", 'K' => "AAR", 'V' => "GTN", 'A' => "GCN", 'D' => "GAY", 'E' => "GAR", 'G' => "GGN"},
+{F => "AAR", L => "RAN", S => "WSN", Y => "ATR", C => "ACR", W => "ACC", P => "GGN", H => "GTR", Q => "GTY", R => "KCN", I => "TAD", M => "TAC", T => "TGN", N => "TTR", K => "TTY", V => "CAN", A => "CGN", D => "CTR", E => "CTY", G => "CCN"},
+{F => "RAA", L => "NAR", S => "NSW", Y => "RTA", C => "RCA", W => "CCA", P => "NGG", H => "RTG", Q => "YTG", R => "NCK", I => "DAT", M => "CAT", T => "NGT", N => "RTT", K => "YTT", V => "NAC", A => "NGC", D => "RTC", E => "YTC", G => "NCC"},
+{F => 2, L => 8, S => 16, Y => 2, C => 2, W => 1, P => 4, H => 2, Q => 2, R => 8, I => 3, M => 1, T => 4, N => 2, K => 2, V => 4, A => 4, D => 2, E => 2, G => 4}
+);
+
+	
+	
+	$peptide =~ s/^\s+//;
+	$peptide =~ s/\s+$//;
+}
+
+sub stdprimers :Local{
+	my ($self, $c) = @_;
+		
+	$c->stash->{template} = "stdprimer.tt2";
+}
+
+sub stdprimercalc :Local{
+	my ($self, $c) = @_;
+
+	my $DNAseq = $c->request->params->{primersequence};
+
+	my $primerseqobj = Bio::Seq->new(-alphabet => 'dna');
+
+	$primerseqobj->seq($DNAseq);
+
+	my ($Gs, $Ts, $As, $Cs, $Others) = 0;
+
+	$Gs = ($DNAseq =~ tr/Gg//);
+	$Ts = ($DNAseq =~ tr/[T|t]//);
+	$As = ($DNAseq =~ tr/[A|a]//);
+	$Cs = ($DNAseq =~ tr/[C|c]//);
+	$Others = (length $DNAseq) - ($Gs + $As + $Ts + $Cs);
+	
+
+	$c->stash->{GinSeq} = $Gs;
+	$c->stash->{TinSeq} = $Ts;
+	$c->stash->{AinSeq} = $As;
+	$c->stash->{CinSeq} = $Cs;
+	$c->stash->{OinSeq} = $Others;
+
+	my ($GC, $total) = 0;
+	
+	$GC = $Gs + $Cs;
+	$total = $GC + $As + $Ts;
+	$c->stash->{GCpercent} = $GC/$total * 100;
+	$c->stash->{AnnTemp} = 81.5 - 16.6 + ($GC/$total * 41) - (500/$total);
+
+	
+	
+	$c->stash->{primersequence} = $primerseqobj->seq();
+	$primerseqobj = $primerseqobj->revcom;
+
+	$c->stash->{priseqrevcom} = $primerseqobj->seq();
+	$c->stash->{totalchars} = $total;
+	
+
+	$c->stash->{template} = "stdprimercalc.tt2";
+}
+
+sub blastform :Local {
+	my ($self, $c) = @_;
+
+	$c->stash->{template} = "blastform.tt2";
+}
+
+sub blast16s :Local {
+	my ($self, $c) = @_;
+
+	my @params = (program => 'blastn', database => 'root/src/GBLCCDB16s', outfile => 'root/src/out2.blst');
+	my $blast_obj = Bio::Tools::Run::StandAloneBlast->new(@params);
+	my $blastqueryseqobj = Bio::Seq->new(-id => 'testquery');
+
+	my $blastseqioobj = Bio::SeqIO->new(-file => '<root/src/test.fasta', -format => 'fasta');
+	$blastqueryseqobj = $blastseqioobj->next_seq;
+
+	my $reportobj = $blast_obj->blastall($blastqueryseqobj);
+	#my $resultobj = $reportobj->next_result;
+	
+	#$c->stash->{blasthits} = $resultobj->num_hits;
+	
+	$c->stash->{template} = "blastres.tt2";
+}
+
+=head1 AUTHOR
+
+root
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+1;

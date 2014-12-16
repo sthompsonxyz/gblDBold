@@ -1,0 +1,7 @@
+[% PROCESS mainmenu.tt2 pagename = "Data Entry" %]
+
+<div id="homenews">
+
+New strain, sample, source
+
+</div>

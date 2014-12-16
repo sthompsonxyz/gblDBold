@@ -1,0 +1,25 @@
+
+[% PROCESS mainmenu.tt2 pagename = "Strain Search Results" %]
+
+    <div id ="results">
+
+    <table cellpadding='3'>
+    <tr><th>GBL Acc. No.</th><th>Strain Code</th><th>Box Number</th><th>Genus</th><th>Species</th><th>Temperature</th></tr>
+    [% # Display each record in a table row %]
+    [% FOREACH strain IN gblstrainsearch -%]
+      <tr>
+        <td align='center'><a href = [% c.uri_for('strains', strain.strains.gbl_accession_number) %]> [% strain.strains.gbl_accession_number %] </a></td>
+	<td align='center'>[% strain.strains.strain_code %]</td>
+	<td align='center'>[% strain.strains.box_number %]</td>
+	<td align='center'>[% strain.phylogenies.genus %]</td>
+	<td align='center'>[% strain.phylogenies.species %]</td>
+	<td align='center'>[% strain.strains.temperature %]</td>
+      </tr>
+    [% END -%]
+    </table>
+
+.. [% gblstrainsearch.size %]<br><br>
+
+
+
+</div>

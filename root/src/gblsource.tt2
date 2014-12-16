@@ -1,0 +1,26 @@
+[% PROCESS mainmenu.tt2 pagename = "Source Search" %]
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+function clearAll(){
+	document.forms[0].reset();
+}
+</SCRIPT>
+
+
+<FORM action="[% c.uri_for('showsources') %]" method="POST">
+<div id="SourceSearchName">
+Name:
+<input type="text" name="sourceNAME" val="">
+</div>
+
+<div id="SourceSearchAddress">
+Address:
+<input type="text" name="address" val="">
+</div>
+
+<div id="SourceSearchSubmit">
+<input type="button" value="Clear" onClick="clearAll()">
+<input type="submit" value="search">
+</form>
+
+

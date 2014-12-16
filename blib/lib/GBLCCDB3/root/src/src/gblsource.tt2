@@ -1,0 +1,37 @@
+<div id="topLico">
+
+</div>
+
+<div id="topBar">
+<h3>GBL DB Web UI v0.2.0</h3><br>
+
+<h3>Source search</h3>
+
+</div>
+
+<div id="leftBar">
+<a href = "/">Home</a><br>
+<a href = "/gblstrain">Strain</a><br>
+<a href = "/gblsample">Sample</a><br>
+<a href = "/gblsource">Source</a><br>
+<a href = "/about">About</a><br>
+LogOff
+
+</div>
+
+<FORM action="sourcesearch.pl" method="post">
+<div id="SourceSearchName">
+Name:
+<input type="text" name="sourceNAME" val="">
+</div>
+
+<div id="SourceSearchAddress">
+Address:
+<input type="text" name="address" val="">
+</div>
+
+<div id="SourceSearchSubmit">
+<input type="submit" value="search">
+</form>
+
+
